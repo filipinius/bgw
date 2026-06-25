@@ -90,7 +90,7 @@
         <h1 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(40px,6.4vw,80px); line-height:0.92; letter-spacing:-0.005em; margin:18px 0 22px; color:#FFFFFF;">Dry van carrier in <span style="color:var(--accent);">Pennsylvania</span></h1>
         <p style="font-size:clamp(16px,1.6vw,19px); line-height:1.55; color:#C7C0B4; max-width:580px; margin:0 0 34px;">BGW Trucking LLC moves interstate freight with 53′ dry van capacity out of Central PA. Active authority, a clean safety record, and a direct line to dispatch.</p>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="/contact/" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Get capacity <span style="font-family:'Archivo';">→</span></a>
+          <a href="#inquire" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Get capacity <span style="font-family:'Archivo';">→</span></a>
           <a href="tel:+17179088887" class="btn-ghost" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:transparent; color:#ECE7DC; border:1px solid rgba(255,255,255,0.30); font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Call dispatch</a>
         </div>
       </div>
@@ -167,13 +167,53 @@
   </section>
 
   <!-- ===== CTA ===== -->
-  <section style="max-width:var(--maxw); margin:0 auto; padding:clamp(40px,5vw,64px) 40px clamp(72px,9vw,112px);">
-    <div style="border:1px solid var(--accent); border-radius:2px; padding:clamp(40px,5vw,60px); display:flex; gap:32px; flex-wrap:wrap; align-items:center; justify-content:space-between; background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 6%, transparent), transparent);">
-      <div style="flex:1 1 420px;">
-        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(28px,3.6vw,48px); line-height:0.95; margin:0 0 14px; color:#FFFFFF;">Have freight to move?</h2>
-        <p style="font-size:17px; line-height:1.55; color:#C7C0B4; max-width:520px; margin:0;">Tell us your lane and commodity — we'll get you covered. Direct, accountable, and authorized to run interstate.</p>
+  <section id="inquire" style="background:var(--bg2); border-top:1px solid var(--border);">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(64px,9vw,112px) 40px; display:flex; gap:clamp(36px,6vw,72px); flex-wrap:wrap;">
+      <!-- contact info -->
+      <div style="flex:1 1 300px; min-width:280px;">
+        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">04 / GET IN TOUCH</span>
+        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,52px); line-height:0.95; margin:16px 0 28px; color:#FFFFFF;">Talk to dispatch</h2>
+        <div style="display:flex; flex-direction:column; gap:0; border:1px solid rgba(255,255,255,0.1); border-radius:2px; overflow:hidden;">
+          <a href="tel:+17179088887" style="display:flex; flex-direction:column; gap:8px; padding:24px 24px; border-bottom:1px solid var(--border); text-decoration:none;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">PHONE</span><span style="font-family:'Saira Condensed'; font-weight:700; font-size:30px; color:var(--accent);">(717) 908-8887</span></a>
+          <div style="display:flex; flex-direction:column; gap:8px; padding:24px 24px; border-bottom:1px solid var(--border);"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">ADDRESS</span><span style="font-size:17px; line-height:1.5; color:#ECE7DC;">Mechanicsburg, PA 17050</span></div>
+          <div style="display:flex; gap:32px; flex-wrap:wrap; padding:24px 24px;">
+            <div style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">USDOT</span><span style="font-family:'Saira Condensed'; font-weight:600; font-size:20px; color:#ECE7DC;">2779903</span></div>
+            <div style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">MC</span><span style="font-family:'Saira Condensed'; font-weight:600; font-size:20px; color:#ECE7DC;">MC-925488</span></div>
+          </div>
+        </div>
       </div>
-      <a href="/contact/" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:18px 30px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:18px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px; white-space:nowrap;">Get capacity <span style="font-family:'Archivo';">→</span></a>
+      <!-- form -->
+      <div style="flex:1 1 380px; min-width:300px;">
+        <!-- Success message (hidden until submit) -->
+        <div id="contact-success" style="display:none; border:1px solid var(--accent); background:rgba(242,106,27,0.08); border-radius:2px; padding:28px; gap:16px; align-items:flex-start;">
+          <span style="font-family:'Saira Condensed'; font-weight:700; font-size:30px; color:var(--accent); line-height:1;">✓</span>
+          <div><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 8px; color:#FFFFFF;">Inquiry sent</h3><p style="font-size:15px; line-height:1.6; color:#C7C0B4; margin:0;">Thanks — we'll be in touch about capacity shortly. For urgent freight, call (717) 908-8887.</p></div>
+        </div>
+        <form id="contact-form" novalidate style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">COMPANY</span><input type="text" name="company" required placeholder="Company name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">CONTACT NAME</span><input type="text" name="name" required placeholder="Your name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">EMAIL</span><input type="email" name="email" required placeholder="you@company.com" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">PHONE</span><input type="tel" name="phone" placeholder="(000) 000 - 0000" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">FREIGHT TYPE</span>
+              <select name="freight" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 stroke=%22%23F26A1B%22 stroke-width=%221.5%22 fill=%22none%22/></svg>'); background-repeat:no-repeat; background-position:right 14px center;">
+                <option>Dry Van / General Freight</option>
+                <option>Expedited / Time-Critical</option>
+                <option>Dedicated / Repeat Lanes</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">LANE (FROM → TO)</span><input type="text" name="lane" placeholder="e.g. Harrisburg, PA → Columbus, OH" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+          </div>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">DETAILS (OPTIONAL)</span><textarea name="notes" rows="3" placeholder="Commodity, weight, frequency, timing — whatever helps us quote." style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px; resize:vertical;"></textarea></label>
+          <button type="submit" class="btn-primary" style="margin-top:6px; padding:16px 26px; background:var(--accent); color:#161310; border:none; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; border-radius:2px; cursor:pointer;">Send inquiry →</button>
+          <p style="font-family:'IBM Plex Mono'; font-size:11px; line-height:1.6; color:#6F685C; margin:2px 0 0;">By submitting you consent to be contacted by BGW Trucking LLC about your freight.</p>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -214,7 +254,36 @@
   </footer>
 
 </div>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function () {
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('contact-success');
+    var endpoint = 'https://formsubmit.co/ajax/ac65b70526646fd401068b903a758ac7';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn.textContent;
+      btn.disabled = true; btn.style.opacity = '0.6'; btn.style.cursor = 'default'; btn.textContent = 'Sending…';
+      var data = new FormData(form);
+      data.append('_subject', 'New freight inquiry — BGW Trucking');
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+      fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function () {
+          form.style.display = 'none';
+          success.style.display = 'flex';
+          if (window.gtag) gtag('event', 'generate_lead', { form: 'freight_inquiry' });
+        })
+        .catch(function () {
+          btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = 'pointer'; btn.textContent = label;
+          alert('Something went wrong sending your inquiry. Please call (717) 908-8887.');
+        });
+    });
+  })();
+</script>
 <script src="/animations.js"></script>
 </body>
 </html>
