@@ -6,6 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="animations.css">
   <script>document.documentElement.classList.add('js');</script>
+  <script src="analytics.js"></script>
   <title>Drive With Us · BGW Trucking LLC · CDL-A Owner-Operators & Company Drivers</title>
   <meta name="description" content="Now hiring CDL-A owner-operators and company drivers at BGW Trucking LLC, Mechanicsburg PA. Honest dispatch, consistent miles, a clean-record carrier. Apply today.">
   <meta name="robots" content="index, follow">
@@ -283,6 +284,7 @@
     function showSuccess() {
       if (form) form.style.display = 'none';
       if (success) success.style.display = 'flex';
+      if (window.gtag) gtag('event', 'generate_lead', { form: 'driver_application' });
     }
 
     // No-JS fallback: the native submit redirects back here with ?sent=1.

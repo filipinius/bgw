@@ -6,6 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="animations.css">
   <script>document.documentElement.classList.add('js');</script>
+  <script src="analytics.js"></script>
   <title>Partner With Us · BGW Trucking LLC · Interstate Freight Capacity</title>
   <meta name="description" content="Brokers and shippers — partner with BGW Trucking LLC for interstate freight. Active authority, clean safety record, 53′ dry van capacity. USDOT 2779903 · MC-925488.">
   <meta name="robots" content="index, follow">
@@ -253,6 +254,7 @@
         .then(function () {
           form.style.display = 'none';
           success.style.display = 'flex';
+          if (window.gtag) gtag('event', 'generate_lead', { form: 'freight_inquiry' });
         })
         .catch(function () {
           btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = 'pointer'; btn.textContent = label;
