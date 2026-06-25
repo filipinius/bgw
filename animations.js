@@ -11,6 +11,14 @@
     window.addEventListener('scroll', syncHeader, { passive: true });
   }
 
+  // FAQ accordion — works regardless of motion preference (answers stay in the DOM).
+  Array.prototype.forEach.call(document.querySelectorAll('.faq-q'), function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.parentNode.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // ---- Parallax on hero / image-panel backgrounds ----

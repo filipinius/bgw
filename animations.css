@@ -56,3 +56,18 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   .phone-btn > span { animation: bgwCallDot 2.4s ease-in-out infinite; }
   @keyframes bgwCallDot { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 }
+
+/* ---- FAQ accordion — answers stay in the DOM (SEO-safe), collapsed only when JS can reopen them ---- */
+.faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left; background:transparent; border:0; cursor:pointer; padding:24px 26px; color:#FFFFFF; }
+.faq-ttl { font-family:'Saira Condensed',sans-serif; font-weight:600; font-size:clamp(18px,2vw,21px); line-height:1.25; }
+.faq-ico { flex:none; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-size:26px; line-height:1; color:var(--accent); }
+.faq-a { display:grid; grid-template-rows:1fr; }
+.faq-a-inner { overflow:hidden; }
+.faq-a p { margin:0; padding:0 26px 26px; font-family:'Archivo',sans-serif; font-size:15px; line-height:1.6; color:#B7AFA1; }
+.js .faq-a { grid-template-rows:0fr; }
+.js .faq-item.open .faq-a { grid-template-rows:1fr; }
+.js .faq-item.open .faq-ico { transform: rotate(45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-a { transition: grid-template-rows .32s cubic-bezier(.16,.84,.44,1); }
+  .faq-ico { transition: transform .3s ease; }
+}
