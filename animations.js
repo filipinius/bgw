@@ -19,6 +19,21 @@
     });
   });
 
+  // US phone formatting on tel inputs → (123) 456 - 7890 as the visitor types.
+  function formatUSPhone(value) {
+    var d = value.replace(/\D/g, '').slice(0, 10);
+    if (d.length === 0) return '';
+    if (d.length < 4) return '(' + d;
+    if (d.length < 7) return '(' + d.slice(0, 3) + ') ' + d.slice(3);
+    return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + ' - ' + d.slice(6);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('input[type="tel"]'), function (inp) {
+    var fmt = function () { inp.value = formatUSPhone(inp.value); };
+    inp.addEventListener('input', fmt);
+    inp.addEventListener('blur', fmt);
+    if (inp.value) fmt();
+  });
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // ---- Parallax on hero / image-panel backgrounds ----
