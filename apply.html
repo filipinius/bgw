@@ -282,15 +282,14 @@
 
     function showSuccess() {
       if (form) form.style.display = 'none';
-      if (success) {
-        success.style.display = 'flex';
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      if (success) success.style.display = 'flex';
     }
 
     // No-JS fallback: the native submit redirects back here with ?sent=1.
+    // The page loads at the top in that case, so scroll the message into view.
     if (/[?&]sent=1(&|$)/.test(location.search)) {
       showSuccess();
+      if (success) success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       history.replaceState(null, '', location.pathname + '#apply');
     }
 
