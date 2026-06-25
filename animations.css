@@ -1,0 +1,47 @@
+/* BGW Trucking — motion layer.
+   Progressive enhancement: everything below is gated on the `.js` class
+   (added synchronously in <head>) and on prefers-reduced-motion, so the
+   site stays fully visible and static when JS or motion is unavailable. */
+
+/* Sticky nav gains a soft shadow once the page is scrolled */
+header { transition: box-shadow .3s ease, background .3s ease; }
+header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ---- Scroll reveal (applied to content blocks by animations.js) ---- */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .7s cubic-bezier(.16,.84,.44,1),
+                transform .7s cubic-bezier(.16,.84,.44,1);
+    will-change: opacity, transform;
+  }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* ---- Hero entrance (CSS-only so there is no first-paint flash) ---- */
+  .js body > div > section:first-of-type > div > div > * {
+    opacity: 0;
+    animation: bgwHeroIn .85s cubic-bezier(.16,.84,.44,1) forwards;
+  }
+  .js body > div > section:first-of-type > div > div > *:nth-child(1) { animation-delay: .10s; }
+  .js body > div > section:first-of-type > div > div > *:nth-child(2) { animation-delay: .22s; }
+  .js body > div > section:first-of-type > div > div > *:nth-child(3) { animation-delay: .34s; }
+  .js body > div > section:first-of-type > div > div > *:nth-child(4) { animation-delay: .46s; }
+  @keyframes bgwHeroIn {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ---- Card hover lift (applied to bordered cards by animations.js) ---- */
+  .lift { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .lift:hover {
+    transform: translateY(-5px);
+    border-color: rgba(242,106,27,0.55) !important;
+    box-shadow: 0 18px 44px -16px rgba(0,0,0,0.65);
+  }
+
+  /* ---- Arrow nudge on primary/ghost buttons ---- */
+  .btn-primary span, .btn-ghost span { transition: transform .2s ease; }
+  .btn-primary:hover span, .btn-ghost:hover span { transform: translateX(5px); }
+}
