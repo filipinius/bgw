@@ -199,11 +199,11 @@
           <span style="font-family:'Saira Condensed'; font-weight:700; font-size:30px; color:var(--accent); line-height:1;">✓</span>
           <div><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 8px; color:#FFFFFF;">Application received</h3><p style="font-size:15px; line-height:1.6; color:#C7C0B4; margin:0;">Thanks — ownership will reach out shortly. For anything urgent, call (717) 908-8887.</p></div>
         </div>
-        <form id="apply-form" action="https://formsubmit.co/ac65b70526646fd401068b903a758ac7" method="POST" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:16px;">
+        <iframe id="apply-sink" name="apply-sink" title="Application response" style="display:none; width:0; height:0; border:0;"></iframe>
+        <form id="apply-form" action="https://formsubmit.co/ac65b70526646fd401068b903a758ac7" method="POST" enctype="multipart/form-data" target="apply-sink" style="display:flex; flex-direction:column; gap:16px;">
           <input type="hidden" name="_subject" value="New driver application — BGW Trucking">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://bgwtrucking.com/apply/?sent=1">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
             <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">FULL NAME</span><input type="text" name="name" required placeholder="Your name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
@@ -296,21 +296,24 @@
 
     if (!form) return;
 
-    // Enhanced path: upload the form (including the CDL file) in the background
-    // with a no-cors POST, so the visitor stays on this page and sees the inline
-    // success state instead of being bounced to FormSubmit's page.
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
+    // Reliable path: the real (multipart) form posts to a hidden iframe, so the
+    // browser guarantees delivery of the CDL file, the page never navigates away,
+    // and the iframe's load event confirms FormSubmit received the submission.
+    var sink = document.getElementById('apply-sink');
+    var submitting = false;
+    form.addEventListener('submit', function () {
+      // The submit event only fires once required fields pass validation.
+      submitting = true;
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.textContent = 'Sending…'; btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; }
-      fetch(endpoint, { method: 'POST', body: new FormData(form), mode: 'no-cors', keepalive: true })
-        .then(showSuccess)
-        .catch(function () {
-          if (btn) { btn.textContent = 'Submit application →'; btn.style.opacity = ''; btn.style.pointerEvents = ''; }
-          alert('Something went wrong sending your application. Please call (717) 908-8887.');
-        });
     });
+    if (sink) {
+      sink.addEventListener('load', function () {
+        if (!submitting) return; // ignore the iframe's initial blank load
+        submitting = false;
+        showSuccess();
+      });
+    }
   })();
 </script>
 <script src="/animations.js"></script>
