@@ -44,4 +44,15 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   /* ---- Arrow nudge on primary/ghost buttons ---- */
   .btn-primary span, .btn-ghost span { transition: transform .2s ease; }
   .btn-primary:hover span, .btn-ghost:hover span { transform: translateX(5px); }
+
+  /* ---- Phone CTA pulse — gentle "call us" cue on the nav phone button ---- */
+  .phone-btn { animation: bgwCallPulse 2.4s ease-in-out infinite; }
+  .phone-btn:hover { animation: none; } /* settle once the user engages */
+  @keyframes bgwCallPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(242,106,27,0.40); }
+    70%  { box-shadow: 0 0 0 7px rgba(242,106,27,0); }
+    100% { box-shadow: 0 0 0 0 rgba(242,106,27,0); }
+  }
+  .phone-btn > span { animation: bgwCallDot 2.4s ease-in-out infinite; }
+  @keyframes bgwCallDot { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 }
