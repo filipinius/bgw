@@ -278,26 +278,39 @@
   (function () {
     var form = document.getElementById('apply-form');
     var success = document.getElementById('apply-success');
+    var endpoint = 'https://formsubmit.co/ac65b70526646fd401068b903a758ac7';
 
-    // FormSubmit redirects back here with ?sent=1 after a successful upload.
-    if (/[?&]sent=1(&|$)/.test(location.search)) {
+    function showSuccess() {
       if (form) form.style.display = 'none';
       if (success) {
         success.style.display = 'flex';
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+    }
+
+    // No-JS fallback: the native submit redirects back here with ?sent=1.
+    if (/[?&]sent=1(&|$)/.test(location.search)) {
+      showSuccess();
       history.replaceState(null, '', location.pathname + '#apply');
     }
 
-    // Native multipart submit (supports the CDL file attachment). The submit
-    // event only fires once required fields pass validation, so this is a safe
-    // place to show progress while the file uploads.
-    if (form) {
-      form.addEventListener('submit', function () {
-        var btn = form.querySelector('button[type="submit"]');
-        if (btn) { btn.textContent = 'Sending…'; btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; }
-      });
-    }
+    if (!form) return;
+
+    // Enhanced path: upload the form (including the CDL file) in the background
+    // with a no-cors POST, so the visitor stays on this page and sees the inline
+    // success state instead of being bounced to FormSubmit's page.
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.textContent = 'Sending…'; btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; }
+      fetch(endpoint, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+        .then(showSuccess)
+        .catch(function () {
+          if (btn) { btn.textContent = 'Submit application →'; btn.style.opacity = ''; btn.style.pointerEvents = ''; }
+          alert('Something went wrong sending your application. Please call (717) 908-8887.');
+        });
+    });
   })();
 </script>
 <script src="animations.js"></script>
