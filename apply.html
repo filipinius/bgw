@@ -199,7 +199,12 @@
           <span style="font-family:'Saira Condensed'; font-weight:700; font-size:30px; color:var(--accent); line-height:1;">✓</span>
           <div><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 8px; color:#FFFFFF;">Application received</h3><p style="font-size:15px; line-height:1.6; color:#C7C0B4; margin:0;">Thanks — ownership will reach out shortly. For anything urgent, call (717) 908-8887.</p></div>
         </div>
-        <form id="apply-form" novalidate style="display:flex; flex-direction:column; gap:16px;">
+        <form id="apply-form" action="https://formsubmit.co/ac65b70526646fd401068b903a758ac7" method="POST" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:16px;">
+          <input type="hidden" name="_subject" value="New driver application — BGW Trucking">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://bgwtrucking.com/apply.html?sent=1">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
             <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">FULL NAME</span><input type="text" name="name" required placeholder="Your name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
             <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">PHONE</span><input type="tel" name="phone" required placeholder="(000) 000-0000" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
@@ -223,6 +228,7 @@
             </label>
           </div>
           <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">ANYTHING ELSE? (OPTIONAL)</span><textarea name="notes" rows="3" placeholder="Tell us about your equipment, lanes you prefer, or questions." style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px; resize:vertical;"></textarea></label>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">CDL PHOTO / PDF (OPTIONAL)</span><input type="file" name="CDL" accept="image/*,.pdf" multiple style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:12px 14px; color:#C7C0B4; font-family:'Archivo'; font-size:14px; cursor:pointer;"><span style="font-family:'IBM Plex Mono'; font-size:10.5px; line-height:1.6; color:#6F685C;">Front &amp; back of your CDL-A. JPG, PNG, or PDF — up to ~10 MB total.</span></label>
           <button type="submit" class="btn-primary" style="margin-top:6px; padding:16px 26px; background:var(--accent); color:#161310; border:none; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; border-radius:2px; cursor:pointer;">Submit application →</button>
           <p style="font-family:'IBM Plex Mono'; font-size:11px; line-height:1.6; color:#6F685C; margin:2px 0 0;">By submitting you consent to be contacted about driving opportunities at BGW Trucking LLC.</p>
         </form>
@@ -272,28 +278,26 @@
   (function () {
     var form = document.getElementById('apply-form');
     var success = document.getElementById('apply-success');
-    var endpoint = 'https://formsubmit.co/ajax/ac65b70526646fd401068b903a758ac7';
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-      var btn = form.querySelector('button[type="submit"]');
-      var label = btn.textContent;
-      btn.disabled = true; btn.style.opacity = '0.6'; btn.style.cursor = 'default'; btn.textContent = 'Sending…';
-      var data = new FormData(form);
-      data.append('_subject', 'New driver application — BGW Trucking');
-      data.append('_template', 'table');
-      data.append('_captcha', 'false');
-      fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-        .then(function (r) { return r.json(); })
-        .then(function () {
-          form.style.display = 'none';
-          success.style.display = 'flex';
-        })
-        .catch(function () {
-          btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = 'pointer'; btn.textContent = label;
-          alert('Something went wrong sending your application. Please call (717) 908-8887.');
-        });
-    });
+
+    // FormSubmit redirects back here with ?sent=1 after a successful upload.
+    if (/[?&]sent=1(&|$)/.test(location.search)) {
+      if (form) form.style.display = 'none';
+      if (success) {
+        success.style.display = 'flex';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      history.replaceState(null, '', location.pathname + '#apply');
+    }
+
+    // Native multipart submit (supports the CDL file attachment). The submit
+    // event only fires once required fields pass validation, so this is a safe
+    // place to show progress while the file uploads.
+    if (form) {
+      form.addEventListener('submit', function () {
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.textContent = 'Sending…'; btn.style.opacity = '0.7'; btn.style.pointerEvents = 'none'; }
+      });
+    }
   })();
 </script>
 <script src="animations.js"></script>
