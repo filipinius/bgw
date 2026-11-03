@@ -6,9 +6,9 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/animations.css">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="/analytics.js"></script>
-  <title>BGW Trucking LLC · Interstate Freight Carrier · Mechanicsburg, PA</title>
-  <meta name="description" content="BGW Trucking LLC is an active interstate property carrier out of Mechanicsburg, PA. Clean safety record, growing fleet, drivers treated like partners. USDOT 2779903 · MC-925488.">
+  <script src="/analytics.js" defer></script>
+  <title>BGW Trucking LLC | Interstate Carrier in Mechanicsburg, PA</title>
+  <meta name="description" content="Interstate dry van carrier in Mechanicsburg, PA with a clean safety record. Now hiring CDL-A owner-operators. USDOT 2779903 · MC-925488.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#17150F">
   <link rel="canonical" href="https://bgwtrucking.com/">
@@ -52,9 +52,63 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is BGW Trucking located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BGW Trucking LLC is based in Mechanicsburg, Pennsylvania (17050), in Cumberland County just outside Harrisburg, on the I-81 and PA Turnpike corridors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kind of freight does BGW Trucking haul?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "53-foot dry van general freight on regional and long-haul interstate lanes, plus US Mail contract work and time-critical loads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is BGW Trucking an authorized interstate carrier?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. BGW Trucking holds active interstate operating authority from the FMCSA under USDOT 2779903 and MC-925488."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is BGW Trucking hiring drivers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We are currently hiring CDL-A owner-operators only, who lease on and run under our authority. We are not hiring company drivers at this time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get a quote or book capacity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Brokers and shippers can send a capacity inquiry from our shippers page or call dispatch directly at (717) 908-8887."
+        }
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800" media="(max-width: 799px)" fetchpriority="high">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1600" media="(min-width: 800px) and (max-width: 1599px)" fetchpriority="high">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=2400" media="(min-width: 1600px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
   <style>
     :root {
       --accent: #F26A1B;
@@ -77,6 +131,10 @@
     .btn-primary:hover { filter: brightness(1.08); }
     .btn-ghost { transition: border-color .15s ease, background .15s ease; }
     .btn-ghost:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.06); }
+    /* Hero image: sized per viewport so phones don't download the 2400px file */
+    .hero { --hero-img: url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    @media (min-width: 800px) { .hero { --hero-img: url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1600'); } }
+    @media (min-width: 1600px) { .hero { --hero-img: url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=2400'); } }
   </style>
 </head>
 <body>
@@ -104,7 +162,7 @@
   </header>
 
   <!-- ===== HERO ===== -->
-  <section style="position:relative; min-height:clamp(560px,74vh,780px); display:flex; align-items:center; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(12,11,9,0.95) 0%, rgba(12,11,9,0.82) 40%, rgba(12,11,9,0.30) 72%, rgba(12,11,9,0.55) 100%), linear-gradient(0deg, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0) 55%), #0C0B09 url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2400') center 45% / cover no-repeat;">
+  <section class="hero" style="position:relative; min-height:clamp(560px,74vh,780px); display:flex; align-items:center; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(12,11,9,0.95) 0%, rgba(12,11,9,0.82) 40%, rgba(12,11,9,0.30) 72%, rgba(12,11,9,0.55) 100%), linear-gradient(0deg, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0) 55%), #0C0B09 var(--hero-img) center 45% / cover no-repeat;">
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(56px,8vw,104px) 40px; width:100%;">
     <div style="max-width:700px;">
       <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px;">
@@ -219,21 +277,67 @@
     </div>
   </section>
 
+  <!-- ===== ABOUT ===== -->
+  <section id="about" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(64px,9vw,112px) 40px; display:flex; gap:clamp(36px,6vw,80px); flex-wrap:wrap;">
+      <div style="flex:1 1 320px; min-width:280px;">
+        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">04 / ABOUT</span>
+        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:16px 0 0; color:#FFFFFF;">A Central PA trucking company, run by its owners</h2>
+      </div>
+      <div style="flex:1 1 420px; min-width:280px; display:flex; flex-direction:column; gap:18px; font-size:clamp(16px,1.5vw,17px); line-height:1.65; color:#B7AFA1;">
+        <p style="margin:0;">BGW Trucking LLC is a small, owner-run interstate trucking company based in Mechanicsburg, Pennsylvania, in Cumberland County just outside Harrisburg. We hold active operating authority from the FMCSA (USDOT 2779903, MC-925488) to haul general freight across state lines, and we are authorized to carry US Mail.</p>
+        <p style="margin:0;">Our home base puts us right on the I-81 and Pennsylvania Turnpike corridors, one of the busiest freight crossroads on the East Coast. From Central PA we run 53′ dry van loads on regional and long-haul interstate lanes for brokers and shippers who need capacity they can count on.</p>
+        <p style="margin:0;">We are deliberately small. Every load is planned by the people who own the company, so brokers and shippers get one accountable contact, and owner-operators leased on with us get straight answers instead of a call center. Our safety record is public: zero reportable crashes and zero out-of-service events over the last 24 months.</p>
+        <p style="margin:0;">Have freight in or out of Pennsylvania? <a href="/shippers/" style="color:var(--accent);">See our dry van capacity</a>. Own a truck and want steady interstate miles? <a href="/drivers/" style="color:var(--accent);">Read about owner-operator opportunities</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== DRIVE WITH US ===== -->
   <section style="max-width:var(--maxw); margin:0 auto; padding:clamp(40px,5vw,64px) 40px;">
     <div style="display:flex; gap:clamp(32px,5vw,64px); flex-wrap:wrap; align-items:stretch; background:var(--bg2); border:1px solid var(--border); border-radius:2px; overflow:hidden;">
       <div style="flex:1 1 380px; min-width:300px; padding:clamp(40px,5vw,60px);">
-        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">04 / CAREERS</span>
-        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,50px); line-height:0.95; margin:16px 0 22px; color:#FFFFFF;">Drive with a carrier that runs clean</h2>
-        <p style="font-size:16px; line-height:1.6; color:#B7AFA1; max-width:440px; margin:0 0 28px;">We are hiring owner-operators and company drivers as we grow. Honest dispatch, consistent miles, and respect for the people behind the wheel.</p>
+        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">05 / OWNER-OPERATORS</span>
+        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,50px); line-height:0.95; margin:16px 0 22px; color:#FFFFFF;">Owner-operators: lease on with a carrier that runs clean</h2>
+        <p style="font-size:16px; line-height:1.6; color:#B7AFA1; max-width:440px; margin:0 0 28px;">We are currently hiring CDL-A owner-operators to lease on under our authority. Honest dispatch, consistent miles, and respect for the people behind the wheel.</p>
         <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:34px;">
-          <div style="display:flex; align-items:center; gap:13px;"><span style="width:7px; height:7px; background:var(--accent); transform:rotate(45deg); flex:none;"></span><span style="font-size:15px; color:#D8D2C7;">Owner-operators &amp; company drivers</span></div>
+          <div style="display:flex; align-items:center; gap:13px;"><span style="width:7px; height:7px; background:var(--accent); transform:rotate(45deg); flex:none;"></span><span style="font-size:15px; color:#D8D2C7;">Owner-operators — lease on under our authority</span></div>
           <div style="display:flex; align-items:center; gap:13px;"><span style="width:7px; height:7px; background:var(--accent); transform:rotate(45deg); flex:none;"></span><span style="font-size:15px; color:#D8D2C7;">Clean-record carrier — your CSA stays protected</span></div>
           <div style="display:flex; align-items:center; gap:13px;"><span style="width:7px; height:7px; background:var(--accent); transform:rotate(45deg); flex:none;"></span><span style="font-size:15px; color:#D8D2C7;">Direct line to ownership, not a call center</span></div>
         </div>
-        <a href="/drivers/#apply" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Apply to drive <span style="font-family:'Archivo';">→</span></a>
+        <a href="/drivers/#apply" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Apply as owner-operator <span style="font-family:'Archivo';">→</span></a>
       </div>
       <div style="flex:1 1 300px; min-width:260px; position:relative; min-height:320px; background:linear-gradient(160deg, rgba(242,106,27,0.10) 0%, rgba(12,11,9,0.45) 50%, rgba(12,11,9,0.86) 100%), #0C0B09 url('https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400') center center / cover no-repeat;"></div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" style="max-width:var(--maxw); margin:0 auto; padding:clamp(40px,5vw,64px) 40px;">
+    <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin-bottom:44px;">
+      <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">06 / FAQ</span>
+      <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">Common questions</h2>
+    </div>
+    <div style="border:1px solid var(--border); border-radius:2px; overflow:hidden;">
+        <div class="faq-item" style="background:var(--bg2);">
+          <button class="faq-q" aria-expanded="false"><span class="faq-ttl">Where is BGW Trucking located?</span><span class="faq-ico" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>BGW Trucking LLC is based in Mechanicsburg, Pennsylvania (17050), in Cumberland County just outside Harrisburg, on the I-81 and PA Turnpike corridors.</p></div></div>
+        </div>
+        <div class="faq-item" style="background:var(--bg2); border-top:1px solid var(--border);">
+          <button class="faq-q" aria-expanded="false"><span class="faq-ttl">What kind of freight does BGW Trucking haul?</span><span class="faq-ico" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>53-foot dry van general freight on regional and long-haul interstate lanes, plus US Mail contract work and time-critical loads.</p></div></div>
+        </div>
+        <div class="faq-item" style="background:var(--bg2); border-top:1px solid var(--border);">
+          <button class="faq-q" aria-expanded="false"><span class="faq-ttl">Is BGW Trucking an authorized interstate carrier?</span><span class="faq-ico" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Yes. BGW Trucking holds active interstate operating authority from the FMCSA under USDOT 2779903 and MC-925488.</p></div></div>
+        </div>
+        <div class="faq-item" style="background:var(--bg2); border-top:1px solid var(--border);">
+          <button class="faq-q" aria-expanded="false"><span class="faq-ttl">Is BGW Trucking hiring drivers?</span><span class="faq-ico" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>We are currently hiring CDL-A owner-operators only, who lease on and run under our authority. We are not hiring company drivers at this time.</p></div></div>
+        </div>
+        <div class="faq-item" style="background:var(--bg2); border-top:1px solid var(--border);">
+          <button class="faq-q" aria-expanded="false"><span class="faq-ttl">How do I get a quote or book capacity?</span><span class="faq-ico" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Brokers and shippers can send a capacity inquiry from our shippers page or call dispatch directly at (717) 908-8887.</p></div></div>
+        </div>
     </div>
   </section>
 

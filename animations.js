@@ -40,7 +40,7 @@
   var parallaxUpdaters = [];
   Array.prototype.forEach.call(document.querySelectorAll('[style*="cover"]'), function (el) {
     var style = el.getAttribute('style') || '';
-    if (!/url\(/.test(style)) return;                       // background image only
+    if (!/url\(|var\(--hero-img\)/.test(style)) return;   // background image only
     var gradCount = (style.match(/linear-gradient/g) || []).length;
     var m = style.match(/(\d+)%\s*\/\s*cover/);             // image layer's vertical %
     var baseV = m ? parseInt(m[1], 10) : 50;

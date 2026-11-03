@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="/analytics.js"></script>
-  <title>Dry Van Carrier in Pennsylvania — Interstate Freight Capacity | BGW Trucking LLC</title>
-  <meta name="description" content="BGW Trucking LLC is an active interstate dry van carrier in Pennsylvania. 53′ dry van capacity, OTR &amp; interstate lanes, US Mail authority, and a clean safety record. Get capacity — USDOT 2779903 · MC-925488.">
+  <script src="/analytics.js" defer></script>
+  <title>Dry Van Carrier in Pennsylvania | BGW Trucking LLC</title>
+  <meta name="description" content="Interstate 53′ dry van carrier in Mechanicsburg, PA. OTR and regional capacity, US Mail authority, clean safety record. USDOT 2779903 · MC-925488.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#17150F">
   <link rel="canonical" href="https://bgwtrucking.com/shippers/">
@@ -39,9 +39,15 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/animations.css">
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=800" media="(max-width: 799px)" fetchpriority="high">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=1600" media="(min-width: 800px) and (max-width: 1599px)" fetchpriority="high">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=2400" media="(min-width: 1600px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
   <style>
     :root { --accent:#F26A1B; --bg:#17150F; --bg2:#201D15; --border:rgba(255,255,255,0.07); --maxw:1240px; }
     *, *::before, *::after { box-sizing: border-box; }
@@ -56,6 +62,10 @@
     .btn-primary:hover { filter: brightness(1.08); }
     .btn-ghost { transition: border-color .15s ease, background .15s ease; }
     .btn-ghost:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.06); }
+    /* Hero image: sized per viewport so phones don't download the 2400px file */
+    .hero { --hero-img: url('https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    @media (min-width: 800px) { .hero { --hero-img: url('https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=1600'); } }
+    @media (min-width: 1600px) { .hero { --hero-img: url('https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&cs=tinysrgb&w=2400'); } }
   </style>
 </head>
 <body>
@@ -83,7 +93,7 @@
   </header>
 
   <!-- ===== HERO ===== -->
-  <section style="position:relative; min-height:clamp(440px,58vh,600px); display:flex; align-items:center; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(12,11,9,0.94) 0%, rgba(12,11,9,0.78) 44%, rgba(12,11,9,0.35) 78%, rgba(12,11,9,0.58) 100%), linear-gradient(0deg, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0) 55%), #0C0B09 url('https://images.pexels.com/photos/1267325/pexels-photo-1267325.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2400') center 60% / cover no-repeat;">
+  <section class="hero" style="position:relative; min-height:clamp(440px,58vh,600px); display:flex; align-items:center; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(12,11,9,0.94) 0%, rgba(12,11,9,0.78) 44%, rgba(12,11,9,0.35) 78%, rgba(12,11,9,0.58) 100%), linear-gradient(0deg, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0) 55%), #0C0B09 var(--hero-img) center 60% / cover no-repeat;">
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(48px,7vw,84px) 40px; width:100%;">
       <div style="max-width:760px;">
         <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">FOR BROKERS &amp; SHIPPERS</span>
@@ -128,6 +138,7 @@
         <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">02 / WHY BGW</span>
         <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">Capacity you can count on</h2>
       </div>
+      <p style="font-size:clamp(16px,1.5vw,17px); line-height:1.65; color:#B7AFA1; max-width:760px; margin:-20px 0 44px;">Our home base in Mechanicsburg sits where I-81 meets the Pennsylvania Turnpike, putting Philadelphia, Baltimore, Washington DC, New York and Pittsburgh within a day's run. That makes BGW Trucking a practical dry van carrier for freight moving in and out of the Harrisburg and Cumberland Valley distribution corridor, as well as for longer interstate lanes. Brokers get a carrier that is easy to set up and quick to answer, and shippers get the same accountable people on every load.</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;">
         <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Active authority</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">USDOT 2779903 and MC-925488 — authorized for interstate property and US Mail.</p></div>
         <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Clean &amp; auditable</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Zero reportable crashes and zero out-of-service events over 24 months — the numbers are public.</p></div>
