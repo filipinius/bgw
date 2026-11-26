@@ -110,11 +110,11 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
 
 /* ---- FAQ accordion — answers stay in the DOM (SEO-safe), collapsed only when JS can reopen them ---- */
 .faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left; background:transparent; border:0; cursor:pointer; padding:24px 26px; color:#FFFFFF; }
-.faq-ttl { font-family:'Saira Condensed',sans-serif; font-weight:600; font-size:clamp(18px,2vw,21px); line-height:1.25; }
-.faq-ico { flex:none; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-size:26px; line-height:1; color:var(--accent); }
+.faq-ttl { font-family:'Saira Condensed','Saira Fallback',sans-serif; font-weight:600; font-size:clamp(18px,2vw,21px); line-height:1.25; }
+.faq-ico { flex:none; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:'Archivo','Archivo Fallback',sans-serif; font-size:26px; line-height:1; color:var(--accent); }
 .faq-a { display:grid; grid-template-rows:1fr; }
 .faq-a-inner { overflow:hidden; }
-.faq-a p { margin:0; padding:0 26px 26px; font-family:'Archivo',sans-serif; font-size:15px; line-height:1.6; color:#B7AFA1; }
+.faq-a p { margin:0; padding:0 26px 26px; font-family:'Archivo','Archivo Fallback',sans-serif; font-size:15px; line-height:1.6; color:#B7AFA1; }
 .js .faq-a { grid-template-rows:0fr; }
 .js .faq-item.open .faq-a { grid-template-rows:1fr; }
 .js .faq-item.open .faq-ico { transform: rotate(45deg); }
@@ -130,6 +130,12 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-condensed-600.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-400.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-500.woff2" crossorigin>
+  <style>/* Metric-matched fallbacks: text keeps the same size while web fonts load, so nothing shifts */
+@font-face { font-family:'Saira Fallback'; font-weight:100 500; src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo'); size-adjust:70%; ascent-override:162.1%; descent-override:62.7%; line-gap-override:0%; }
+@font-face { font-family:'Saira Fallback'; font-weight:600 900; src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold'),local('Arimo Bold'); size-adjust:70%; ascent-override:162.1%; descent-override:62.7%; line-gap-override:0%; }
+@font-face { font-family:'Archivo Fallback'; src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo'); size-adjust:102.5%; ascent-override:85.7%; descent-override:20.5%; line-gap-override:0%; }
+@font-face { font-family:'Plex Fallback'; src:local('Courier New'),local('CourierNewPSMT'),local('Liberation Mono'),local('Cousine'); size-adjust:100%; ascent-override:102.5%; descent-override:27.5%; line-gap-override:0%; }
+  </style>
   <style>/* Self-hosted fonts (latin), inlined to skip a request */
 @font-face {
   font-family: 'Archivo';
@@ -220,23 +226,23 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   </style>
 </head>
 <body>
-<div style="min-height:100vh; background:var(--bg); color:#ECE7DC; font-family:'Archivo',sans-serif; overflow-x:hidden;">
+<div style="min-height:100vh; background:var(--bg); color:#ECE7DC; font-family:'Archivo','Archivo Fallback',sans-serif; overflow-x:hidden;">
 
   <!-- ===== NAV ===== -->
   <header style="position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);">
     <nav style="max-width:var(--maxw); margin:0 auto; padding:18px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
       <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
-        <span style="display:inline-flex; align-items:center; justify-content:center; height:34px; padding:0 9px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:700; font-size:16px; letter-spacing:0.02em; border-radius:2px;">BGW</span>
+        <span style="display:inline-flex; align-items:center; justify-content:center; height:34px; padding:0 9px; background:var(--accent); color:#161310; font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:16px; letter-spacing:0.02em; border-radius:2px;">BGW</span>
         <span style="display:flex; flex-direction:column; line-height:1;">
-          <span style="font-family:'Saira Condensed'; font-weight:700; font-size:21px; letter-spacing:0.04em; white-space:nowrap;">BGW TRUCKING LLC</span>
-          <span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:0.22em; color:#9C9384; margin-top:3px;">MECHANICSBURG, PA</span>
+          <span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:21px; letter-spacing:0.04em; white-space:nowrap;">BGW TRUCKING LLC</span>
+          <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:10px; letter-spacing:0.22em; color:#9C9384; margin-top:3px;">MECHANICSBURG, PA</span>
         </span>
       </a>
       <div style="display:flex; align-items:center; gap:30px; flex-wrap:wrap;">
-        <a href="/" class="nav-link" style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Home</a>
-        <a href="/drivers/" class="nav-link" style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Drive With Us</a>
-        <a href="/shippers/" style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); text-decoration:none;">Partner With Us</a>
-        <a href="tel:+17179088887" class="phone-btn" style="display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--accent); color:var(--accent); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.08em; text-decoration:none; border-radius:2px;">
+        <a href="/" class="nav-link" style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Home</a>
+        <a href="/drivers/" class="nav-link" style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Drive With Us</a>
+        <a href="/shippers/" style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); text-decoration:none;">Partner With Us</a>
+        <a href="tel:+17179088887" class="phone-btn" style="display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--accent); color:var(--accent); font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:13px; letter-spacing:0.08em; text-decoration:none; border-radius:2px;">
           <span style="width:6px; height:6px; background:currentColor; border-radius:50%;"></span>(717) 908-8887
         </a>
       </div>
@@ -247,12 +253,12 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <section class="hero" style="position:relative; min-height:clamp(440px,58vh,600px); display:flex; align-items:center; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(12,11,9,0.94) 0%, rgba(12,11,9,0.78) 44%, rgba(12,11,9,0.35) 78%, rgba(12,11,9,0.58) 100%), linear-gradient(0deg, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0) 55%), #0C0B09 var(--hero-img) center 60% / cover no-repeat;">
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(48px,7vw,84px) 40px; width:100%;">
       <div style="max-width:760px;">
-        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">FOR BROKERS &amp; SHIPPERS</span>
-        <h1 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(40px,6.4vw,80px); line-height:0.92; letter-spacing:-0.005em; margin:18px 0 22px; color:#FFFFFF;">Dry van carrier in <span style="color:var(--accent);">Pennsylvania</span></h1>
+        <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);">FOR BROKERS &amp; SHIPPERS</span>
+        <h1 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; text-transform:uppercase; font-size:clamp(40px,6.4vw,80px); line-height:0.92; letter-spacing:-0.005em; margin:18px 0 22px; color:#FFFFFF;">Dry van carrier in <span style="color:var(--accent);">Pennsylvania</span></h1>
         <p style="font-size:clamp(16px,1.6vw,19px); line-height:1.55; color:#C7C0B4; max-width:580px; margin:0 0 34px;">BGW Trucking LLC moves interstate freight with 53′ dry van capacity out of Central PA. Active authority, a clean safety record, and a direct line to dispatch.</p>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="#inquire" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Get capacity <span style="font-family:'Archivo';">→</span></a>
-          <a href="tel:+17179088887" class="btn-ghost" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:transparent; color:#ECE7DC; border:1px solid rgba(255,255,255,0.30); font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Call dispatch</a>
+          <a href="#inquire" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Get capacity <span style="font-family:'Archivo','Archivo Fallback';">→</span></a>
+          <a href="tel:+17179088887" class="btn-ghost" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:transparent; color:#ECE7DC; border:1px solid rgba(255,255,255,0.30); font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Call dispatch</a>
         </div>
       </div>
     </div>
@@ -261,24 +267,24 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <!-- ===== CREDENTIAL STRIP ===== -->
   <section style="max-width:var(--maxw); margin:0 auto; padding:clamp(40px,5vw,56px) 40px 0;">
     <div style="display:flex; flex-wrap:wrap; background:var(--bg2); border:1px solid var(--border); border-radius:2px;">
-      <div style="flex:1 1 180px; padding:26px 26px; border-right:1px solid var(--border);"><div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">USDOT</div><div style="font-family:'Saira Condensed'; font-weight:700; font-size:clamp(26px,2.6vw,34px); color:#FFFFFF;">2779903</div></div>
-      <div style="flex:1 1 180px; padding:26px 26px; border-right:1px solid var(--border);"><div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">MC NUMBER</div><div style="font-family:'Saira Condensed'; font-weight:700; font-size:clamp(26px,2.6vw,34px); color:#FFFFFF;">MC-925488</div></div>
-      <div style="flex:1 1 180px; padding:26px 26px; border-right:1px solid var(--border);"><div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">SAFETY · 24 MO</div><div style="font-family:'Saira Condensed'; font-weight:700; font-size:clamp(26px,2.6vw,34px); color:var(--accent);">0 / 0</div></div>
-      <div style="flex:1 1 180px; padding:26px 26px;"><div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">EQUIPMENT</div><div style="font-family:'Saira Condensed'; font-weight:600; font-size:clamp(18px,1.8vw,22px); line-height:1.15; color:#FFFFFF;">53′ Dry Van</div></div>
+      <div style="flex:1 1 180px; padding:26px 26px; border-right:1px solid var(--border);"><div style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">USDOT</div><div style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:clamp(26px,2.6vw,34px); color:#FFFFFF;">2779903</div></div>
+      <div style="flex:1 1 180px; padding:26px 26px; border-right:1px solid var(--border);"><div style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">MC NUMBER</div><div style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:clamp(26px,2.6vw,34px); color:#FFFFFF;">MC-925488</div></div>
+      <div style="flex:1 1 180px; padding:26px 26px; border-right:1px solid var(--border);"><div style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">SAFETY · 24 MO</div><div style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:clamp(26px,2.6vw,34px); color:var(--accent);">0 / 0</div></div>
+      <div style="flex:1 1 180px; padding:26px 26px;"><div style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.14em; color:#9C9384; margin-bottom:10px;">EQUIPMENT</div><div style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:clamp(18px,1.8vw,22px); line-height:1.15; color:#FFFFFF;">53′ Dry Van</div></div>
     </div>
   </section>
 
   <!-- ===== CAPABILITIES ===== -->
   <section style="max-width:var(--maxw); margin:0 auto; padding:clamp(64px,9vw,112px) 40px clamp(40px,5vw,56px);">
     <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin-bottom:44px;">
-      <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">01 / CAPABILITIES</span>
-      <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">What we run for you</h2>
+      <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);">01 / CAPABILITIES</span>
+      <h2 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">What we run for you</h2>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;">
-      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">53′ Dry Van</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Full-size 53-foot dry van capacity for general commodities and palletized freight.</p></div>
-      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">OTR &amp; Interstate</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Long-haul and regional interstate lanes out of Central PA — coast to coast.</p></div>
-      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Time-Critical</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Expedited and schedule-sensitive loads, including US Mail contract work.</p></div>
-      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Dedicated Lanes</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Consistent, contracted freight you can plan around — set lanes, reliable capacity.</p></div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">53′ Dry Van</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Full-size 53-foot dry van capacity for general commodities and palletized freight.</p></div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">OTR &amp; Interstate</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Long-haul and regional interstate lanes out of Central PA — coast to coast.</p></div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Time-Critical</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Expedited and schedule-sensitive loads, including US Mail contract work.</p></div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Dedicated Lanes</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Consistent, contracted freight you can plan around — set lanes, reliable capacity.</p></div>
     </div>
   </section>
 
@@ -286,14 +292,14 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <section style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(64px,9vw,112px) 40px;">
       <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin-bottom:44px;">
-        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">02 / WHY BGW</span>
-        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">Capacity you can count on</h2>
+        <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);">02 / WHY BGW</span>
+        <h2 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">Capacity you can count on</h2>
       </div>
       <p style="font-size:clamp(16px,1.5vw,17px); line-height:1.65; color:#B7AFA1; max-width:760px; margin:-20px 0 44px;">Our home base in Mechanicsburg sits where I-81 meets the Pennsylvania Turnpike, putting Philadelphia, Baltimore, Washington DC, New York and Pittsburgh within a day's run. That makes BGW Trucking a practical dry van carrier for freight moving in and out of the Harrisburg and Cumberland Valley distribution corridor, as well as for longer interstate lanes. Brokers get a carrier that is easy to set up and quick to answer, and shippers get the same accountable people on every load.</p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;">
-        <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Active authority</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">USDOT 2779903 and MC-925488 — authorized for interstate property and US Mail.</p></div>
-        <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Clean &amp; auditable</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Zero reportable crashes and zero out-of-service events over 24 months — the numbers are public.</p></div>
-        <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Direct dispatch</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">One accountable carrier and a direct line to the people running the trucks — no runaround.</p></div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Active authority</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">USDOT 2779903 and MC-925488 — authorized for interstate property and US Mail.</p></div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Clean &amp; auditable</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">Zero reportable crashes and zero out-of-service events over 24 months — the numbers are public.</p></div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:2px; padding:32px 28px;"><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 12px; color:#FFFFFF;">Direct dispatch</h3><p style="font-size:15px; line-height:1.6; color:#B7AFA1; margin:0;">One accountable carrier and a direct line to the people running the trucks — no runaround.</p></div>
       </div>
     </div>
   </section>
@@ -301,8 +307,8 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <!-- ===== FAQ ===== -->
   <section style="max-width:var(--maxw); margin:0 auto; padding:clamp(64px,9vw,112px) 40px clamp(40px,5vw,56px);">
     <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; margin-bottom:44px;">
-      <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">03 / FAQ</span>
-      <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">Shipper questions</h2>
+      <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);">03 / FAQ</span>
+      <h2 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.4vw,56px); line-height:0.95; margin:0; color:#FFFFFF;">Shipper questions</h2>
     </div>
     <div style="border:1px solid var(--border); border-radius:2px; overflow:hidden;">
       <div class="faq-item" style="background:var(--bg2);">
@@ -333,14 +339,14 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(64px,9vw,112px) 40px; display:flex; gap:clamp(36px,6vw,72px); flex-wrap:wrap;">
       <!-- contact info -->
       <div style="flex:1 1 300px; min-width:280px;">
-        <span style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.2em; color:var(--accent);">04 / GET IN TOUCH</span>
-        <h2 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,52px); line-height:0.95; margin:16px 0 28px; color:#FFFFFF;">Talk to dispatch</h2>
+        <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.2em; color:var(--accent);">04 / GET IN TOUCH</span>
+        <h2 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; text-transform:uppercase; font-size:clamp(30px,4vw,52px); line-height:0.95; margin:16px 0 28px; color:#FFFFFF;">Talk to dispatch</h2>
         <div style="display:flex; flex-direction:column; gap:0; border:1px solid rgba(255,255,255,0.1); border-radius:2px; overflow:hidden;">
-          <a href="tel:+17179088887" style="display:flex; flex-direction:column; gap:8px; padding:24px 24px; border-bottom:1px solid var(--border); text-decoration:none;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">PHONE</span><span style="font-family:'Saira Condensed'; font-weight:700; font-size:30px; color:var(--accent);">(717) 908-8887</span></a>
-          <div style="display:flex; flex-direction:column; gap:8px; padding:24px 24px; border-bottom:1px solid var(--border);"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">ADDRESS</span><span style="font-size:17px; line-height:1.5; color:#ECE7DC;">Mechanicsburg, PA 17050</span></div>
+          <a href="tel:+17179088887" style="display:flex; flex-direction:column; gap:8px; padding:24px 24px; border-bottom:1px solid var(--border); text-decoration:none;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.16em; color:#9C9384;">PHONE</span><span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:30px; color:var(--accent);">(717) 908-8887</span></a>
+          <div style="display:flex; flex-direction:column; gap:8px; padding:24px 24px; border-bottom:1px solid var(--border);"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.16em; color:#9C9384;">ADDRESS</span><span style="font-size:17px; line-height:1.5; color:#ECE7DC;">Mechanicsburg, PA 17050</span></div>
           <div style="display:flex; gap:32px; flex-wrap:wrap; padding:24px 24px;">
-            <div style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">USDOT</span><span style="font-family:'Saira Condensed'; font-weight:600; font-size:20px; color:#ECE7DC;">2779903</span></div>
-            <div style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.16em; color:#9C9384;">MC</span><span style="font-family:'Saira Condensed'; font-weight:600; font-size:20px; color:#ECE7DC;">MC-925488</span></div>
+            <div style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.16em; color:#9C9384;">USDOT</span><span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:20px; color:#ECE7DC;">2779903</span></div>
+            <div style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.16em; color:#9C9384;">MC</span><span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:20px; color:#ECE7DC;">MC-925488</span></div>
           </div>
         </div>
       </div>
@@ -348,32 +354,32 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
       <div style="flex:1 1 380px; min-width:300px;">
         <!-- Success message (hidden until submit) -->
         <div id="contact-success" style="display:none; border:1px solid var(--accent); background:rgba(242,106,27,0.08); border-radius:2px; padding:28px; gap:16px; align-items:flex-start;">
-          <span style="font-family:'Saira Condensed'; font-weight:700; font-size:30px; color:var(--accent); line-height:1;">✓</span>
-          <div><h3 style="font-family:'Saira Condensed'; font-weight:600; font-size:24px; margin:0 0 8px; color:#FFFFFF;">Inquiry sent</h3><p style="font-size:15px; line-height:1.6; color:#C7C0B4; margin:0;">Thanks — we'll be in touch about capacity shortly. For urgent freight, call (717) 908-8887.</p></div>
+          <span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:30px; color:var(--accent); line-height:1;">✓</span>
+          <div><h3 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:24px; margin:0 0 8px; color:#FFFFFF;">Inquiry sent</h3><p style="font-size:15px; line-height:1.6; color:#C7C0B4; margin:0;">Thanks — we'll be in touch about capacity shortly. For urgent freight, call (717) 908-8887.</p></div>
         </div>
         <form id="contact-form" novalidate style="display:flex; flex-direction:column; gap:16px;">
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">COMPANY</span><input type="text" name="company" required placeholder="Company name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
-            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">CONTACT NAME</span><input type="text" name="name" required placeholder="Your name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">COMPANY</span><input type="text" name="company" required placeholder="Company name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">CONTACT NAME</span><input type="text" name="name" required placeholder="Your name" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px;"></label>
           </div>
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">EMAIL</span><input type="email" name="email" required placeholder="you@company.com" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
-            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">PHONE</span><input type="tel" name="phone" placeholder="(000) 000 - 0000" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">EMAIL</span><input type="email" name="email" required placeholder="you@company.com" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">PHONE</span><input type="tel" name="phone" placeholder="(000) 000 - 0000" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px;"></label>
           </div>
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">FREIGHT TYPE</span>
-              <select name="freight" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 stroke=%22%23F26A1B%22 stroke-width=%221.5%22 fill=%22none%22/></svg>'); background-repeat:no-repeat; background-position:right 14px center;">
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">FREIGHT TYPE</span>
+              <select name="freight" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 stroke=%22%23F26A1B%22 stroke-width=%221.5%22 fill=%22none%22/></svg>'); background-repeat:no-repeat; background-position:right 14px center;">
                 <option>Dry Van / General Freight</option>
                 <option>Expedited / Time-Critical</option>
                 <option>Dedicated / Repeat Lanes</option>
                 <option>Other</option>
               </select>
             </label>
-            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">LANE (FROM → TO)</span><input type="text" name="lane" placeholder="e.g. Harrisburg, PA → Columbus, OH" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px;"></label>
+            <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">LANE (FROM → TO)</span><input type="text" name="lane" placeholder="e.g. Harrisburg, PA → Columbus, OH" style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px;"></label>
           </div>
-          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.12em; color:#9C9384;">DETAILS (OPTIONAL)</span><textarea name="notes" rows="3" placeholder="Commodity, weight, frequency, timing — whatever helps us quote." style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo'; font-size:15px; resize:vertical;"></textarea></label>
-          <button type="submit" class="btn-primary" style="margin-top:6px; padding:16px 26px; background:var(--accent); color:#161310; border:none; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; border-radius:2px; cursor:pointer;">Send inquiry →</button>
-          <p style="font-family:'IBM Plex Mono'; font-size:11px; line-height:1.6; color:#928A7B; margin:2px 0 0;">By submitting you consent to be contacted by BGW Trucking LLC about your freight.</p>
+          <label style="display:flex; flex-direction:column; gap:8px;"><span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.12em; color:#9C9384;">DETAILS (OPTIONAL)</span><textarea name="notes" rows="3" placeholder="Commodity, weight, frequency, timing — whatever helps us quote." style="background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:2px; padding:13px 14px; color:#ECE7DC; font-family:'Archivo','Archivo Fallback'; font-size:15px; resize:vertical;"></textarea></label>
+          <button type="submit" class="btn-primary" style="margin-top:6px; padding:16px 26px; background:var(--accent); color:#161310; border:none; font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; border-radius:2px; cursor:pointer;">Send inquiry →</button>
+          <p style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; line-height:1.6; color:#928A7B; margin:2px 0 0;">By submitting you consent to be contacted by BGW Trucking LLC about your freight.</p>
         </form>
       </div>
     </div>
@@ -384,14 +390,14 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(48px,6vw,72px) 40px; display:flex; gap:48px; flex-wrap:wrap; justify-content:space-between;">
       <div style="flex:1 1 280px; min-width:240px;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
-          <span style="display:inline-flex; align-items:center; justify-content:center; height:30px; padding:0 8px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:700; font-size:14px; letter-spacing:0.02em; border-radius:2px;">BGW</span>
-          <span style="font-family:'Saira Condensed'; font-weight:700; font-size:20px; letter-spacing:0.04em; color:#FFFFFF;">BGW TRUCKING LLC</span>
+          <span style="display:inline-flex; align-items:center; justify-content:center; height:30px; padding:0 8px; background:var(--accent); color:#161310; font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:14px; letter-spacing:0.02em; border-radius:2px;">BGW</span>
+          <span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:20px; letter-spacing:0.04em; color:#FFFFFF;">BGW TRUCKING LLC</span>
         </div>
-        <p style="font-family:'IBM Plex Mono'; font-size:12.5px; line-height:1.9; color:#9C9384; margin:0;">Mechanicsburg, PA 17050<br><a href="tel:+17179088887" style="color:var(--accent); text-decoration:none;">(717) 908-8887</a></p>
+        <p style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12.5px; line-height:1.9; color:#9C9384; margin:0;">Mechanicsburg, PA 17050<br><a href="tel:+17179088887" style="color:var(--accent); text-decoration:none;">(717) 908-8887</a></p>
       </div>
       <div style="flex:0 1 auto; display:flex; gap:56px; flex-wrap:wrap;">
         <div>
-          <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.18em; color:#928A7B; margin-bottom:16px;">PAGES</div>
+          <div style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.18em; color:#928A7B; margin-bottom:16px;">PAGES</div>
           <div style="display:flex; flex-direction:column; gap:12px;">
             <a href="/" class="nav-link" style="font-size:14px; color:#C7C0B4; text-decoration:none;">Home</a>
             <a href="/drivers/" class="nav-link" style="font-size:14px; color:#C7C0B4; text-decoration:none;">Drive With Us</a>
@@ -399,8 +405,8 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
           </div>
         </div>
         <div>
-          <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:0.18em; color:#928A7B; margin-bottom:16px;">REGISTRATION</div>
-          <div style="display:flex; flex-direction:column; gap:12px; font-family:'IBM Plex Mono'; font-size:13px; color:#C7C0B4;">
+          <div style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11px; letter-spacing:0.18em; color:#928A7B; margin-bottom:16px;">REGISTRATION</div>
+          <div style="display:flex; flex-direction:column; gap:12px; font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:13px; color:#C7C0B4;">
             <span>USDOT 2779903</span>
             <span>MC-925488</span>
             <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:7px; height:7px; border-radius:50%; background:#4FB477;"></span>Active Authority</span>
@@ -409,7 +415,7 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
       </div>
     </div>
     <div style="border-top:1px solid var(--border);">
-      <div style="max-width:var(--maxw); margin:0 auto; padding:22px 40px; display:flex; gap:16px; flex-wrap:wrap; justify-content:space-between; font-family:'IBM Plex Mono'; font-size:11.5px; letter-spacing:0.06em; color:#928A7B;">
+      <div style="max-width:var(--maxw); margin:0 auto; padding:22px 40px; display:flex; gap:16px; flex-wrap:wrap; justify-content:space-between; font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11.5px; letter-spacing:0.06em; color:#928A7B;">
         <span>© <span id="year"></span> BGW Trucking LLC. All rights reserved.</span>
       </div>
     </div>

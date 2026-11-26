@@ -79,11 +79,11 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
 
 /* ---- FAQ accordion — answers stay in the DOM (SEO-safe), collapsed only when JS can reopen them ---- */
 .faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left; background:transparent; border:0; cursor:pointer; padding:24px 26px; color:#FFFFFF; }
-.faq-ttl { font-family:'Saira Condensed',sans-serif; font-weight:600; font-size:clamp(18px,2vw,21px); line-height:1.25; }
-.faq-ico { flex:none; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-size:26px; line-height:1; color:var(--accent); }
+.faq-ttl { font-family:'Saira Condensed','Saira Fallback',sans-serif; font-weight:600; font-size:clamp(18px,2vw,21px); line-height:1.25; }
+.faq-ico { flex:none; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:'Archivo','Archivo Fallback',sans-serif; font-size:26px; line-height:1; color:var(--accent); }
 .faq-a { display:grid; grid-template-rows:1fr; }
 .faq-a-inner { overflow:hidden; }
-.faq-a p { margin:0; padding:0 26px 26px; font-family:'Archivo',sans-serif; font-size:15px; line-height:1.6; color:#B7AFA1; }
+.faq-a p { margin:0; padding:0 26px 26px; font-family:'Archivo','Archivo Fallback',sans-serif; font-size:15px; line-height:1.6; color:#B7AFA1; }
 .js .faq-a { grid-template-rows:0fr; }
 .js .faq-item.open .faq-a { grid-template-rows:1fr; }
 .js .faq-item.open .faq-ico { transform: rotate(45deg); }
@@ -98,6 +98,12 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-condensed-600.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-400.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-500.woff2" crossorigin>
+  <style>/* Metric-matched fallbacks: text keeps the same size while web fonts load, so nothing shifts */
+@font-face { font-family:'Saira Fallback'; font-weight:100 500; src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo'); size-adjust:70%; ascent-override:162.1%; descent-override:62.7%; line-gap-override:0%; }
+@font-face { font-family:'Saira Fallback'; font-weight:600 900; src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold'),local('Arimo Bold'); size-adjust:70%; ascent-override:162.1%; descent-override:62.7%; line-gap-override:0%; }
+@font-face { font-family:'Archivo Fallback'; src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo'); size-adjust:102.5%; ascent-override:85.7%; descent-override:20.5%; line-gap-override:0%; }
+@font-face { font-family:'Plex Fallback'; src:local('Courier New'),local('CourierNewPSMT'),local('Liberation Mono'),local('Cousine'); size-adjust:100%; ascent-override:102.5%; descent-override:27.5%; line-gap-override:0%; }
+  </style>
   <style>/* Self-hosted fonts (latin), inlined to skip a request */
 @font-face {
   font-family: 'Archivo';
@@ -184,23 +190,23 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   </style>
 </head>
 <body>
-<div style="min-height:100vh; background:var(--bg); color:#ECE7DC; font-family:'Archivo',sans-serif; overflow-x:hidden; display:flex; flex-direction:column;">
+<div style="min-height:100vh; background:var(--bg); color:#ECE7DC; font-family:'Archivo','Archivo Fallback',sans-serif; overflow-x:hidden; display:flex; flex-direction:column;">
 
   <!-- ===== NAV ===== -->
   <header style="position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);">
     <nav style="max-width:var(--maxw); margin:0 auto; padding:18px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
       <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;">
-        <span style="display:inline-flex; align-items:center; justify-content:center; height:34px; padding:0 9px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:700; font-size:16px; letter-spacing:0.02em; border-radius:2px;">BGW</span>
+        <span style="display:inline-flex; align-items:center; justify-content:center; height:34px; padding:0 9px; background:var(--accent); color:#161310; font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:16px; letter-spacing:0.02em; border-radius:2px;">BGW</span>
         <span style="display:flex; flex-direction:column; line-height:1;">
-          <span style="font-family:'Saira Condensed'; font-weight:700; font-size:21px; letter-spacing:0.04em; white-space:nowrap;">BGW TRUCKING LLC</span>
-          <span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:0.22em; color:#9C9384; margin-top:3px;">MECHANICSBURG, PA</span>
+          <span style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:21px; letter-spacing:0.04em; white-space:nowrap;">BGW TRUCKING LLC</span>
+          <span style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:10px; letter-spacing:0.22em; color:#9C9384; margin-top:3px;">MECHANICSBURG, PA</span>
         </span>
       </a>
       <div style="display:flex; align-items:center; gap:30px; flex-wrap:wrap;">
-        <a href="/" class="nav-link" style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Home</a>
-        <a href="/drivers/" class="nav-link" style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Drive With Us</a>
-        <a href="/shippers/" class="nav-link" style="font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Partner With Us</a>
-        <a href="tel:+17179088887" class="phone-btn" style="display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--accent); color:var(--accent); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.08em; text-decoration:none; border-radius:2px;">
+        <a href="/" class="nav-link" style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Home</a>
+        <a href="/drivers/" class="nav-link" style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Drive With Us</a>
+        <a href="/shippers/" class="nav-link" style="font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#C7C0B4; text-decoration:none;">Partner With Us</a>
+        <a href="tel:+17179088887" class="phone-btn" style="display:inline-flex; align-items:center; gap:9px; padding:11px 18px; border:1px solid var(--accent); color:var(--accent); font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:13px; letter-spacing:0.08em; text-decoration:none; border-radius:2px;">
           <span style="width:6px; height:6px; background:currentColor; border-radius:50%;"></span>(717) 908-8887
         </a>
       </div>
@@ -210,19 +216,19 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   <!-- ===== 404 ===== -->
   <main style="flex:1; display:flex; align-items:center; justify-content:center;">
     <div style="max-width:680px; margin:0 auto; padding:clamp(72px,12vw,140px) 40px; text-align:center;">
-      <div style="font-family:'Saira Condensed'; font-weight:700; font-size:clamp(96px,18vw,200px); line-height:0.85; color:var(--accent);">404</div>
-      <h1 style="font-family:'Saira Condensed'; font-weight:700; text-transform:uppercase; font-size:clamp(28px,4vw,48px); line-height:0.98; margin:18px 0 16px; color:#FFFFFF;">This load took a wrong turn</h1>
+      <div style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; font-size:clamp(96px,18vw,200px); line-height:0.85; color:var(--accent);">404</div>
+      <h1 style="font-family:'Saira Condensed','Saira Fallback'; font-weight:700; text-transform:uppercase; font-size:clamp(28px,4vw,48px); line-height:0.98; margin:18px 0 16px; color:#FFFFFF;">This load took a wrong turn</h1>
       <p style="font-size:clamp(15px,1.5vw,18px); line-height:1.6; color:#B7AFA1; max-width:440px; margin:0 auto 34px;">The page you're looking for isn't here. Let's get you back on route.</p>
       <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
-        <a href="/" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Back home <span style="font-family:'Archivo';">→</span></a>
-        <a href="/shippers/#inquire" class="btn-ghost" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:transparent; color:#ECE7DC; border:1px solid rgba(255,255,255,0.30); font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Contact us <span style="font-family:'Archivo';">→</span></a>
+        <a href="/" class="btn-primary" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:var(--accent); color:#161310; font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Back home <span style="font-family:'Archivo','Archivo Fallback';">→</span></a>
+        <a href="/shippers/#inquire" class="btn-ghost" style="display:inline-flex; align-items:center; gap:10px; padding:16px 26px; background:transparent; color:#ECE7DC; border:1px solid rgba(255,255,255,0.30); font-family:'Saira Condensed','Saira Fallback'; font-weight:600; font-size:17px; letter-spacing:0.04em; text-transform:uppercase; text-decoration:none; border-radius:2px;">Contact us <span style="font-family:'Archivo','Archivo Fallback';">→</span></a>
       </div>
     </div>
   </main>
 
   <!-- ===== FOOTER ===== -->
   <footer style="border-top:1px solid var(--border); background:var(--bg2);">
-    <div style="max-width:var(--maxw); margin:0 auto; padding:22px 40px; display:flex; gap:16px; flex-wrap:wrap; justify-content:space-between; font-family:'IBM Plex Mono'; font-size:11.5px; letter-spacing:0.06em; color:#928A7B;">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:22px 40px; display:flex; gap:16px; flex-wrap:wrap; justify-content:space-between; font-family:'IBM Plex Mono','Plex Fallback',monospace; font-size:11.5px; letter-spacing:0.06em; color:#928A7B;">
       <span>© <span id="year"></span> BGW Trucking LLC. All rights reserved.</span>
       <span>USDOT 2779903 · MC-925488</span>
     </div>
