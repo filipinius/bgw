@@ -4,7 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/animations.css">
+  <style>
+/* BGW Trucking — motion layer.
+   Progressive enhancement: everything below is gated on the `.js` class
+   (added synchronously in <head>) and on prefers-reduced-motion, so the
+   site stays fully visible and static when JS or motion is unavailable. */
+
+/* Sticky nav gains a soft shadow once the page is scrolled */
+header { transition: box-shadow .3s ease, background .3s ease; }
+header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ---- Scroll reveal (applied to content blocks by animations.js) ---- */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .7s cubic-bezier(.16,.84,.44,1),
+                transform .7s cubic-bezier(.16,.84,.44,1);
+    will-change: opacity, transform;
+  }
+  .js .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* ---- Hero entrance (CSS-only so there is no first-paint flash) ---- */
+  .js body > div > section:first-of-type > div > div > * {
+    opacity: 0;
+    animation: bgwHeroIn .85s cubic-bezier(.16,.84,.44,1) forwards;
+  }
+  .js body > div > section:first-of-type > div > div > *:nth-child(1) { animation-delay: .10s; }
+  .js body > div > section:first-of-type > div > div > *:nth-child(2) { animation-delay: .22s; }
+  .js body > div > section:first-of-type > div > div > *:nth-child(3) { animation-delay: .34s; }
+  .js body > div > section:first-of-type > div > div > *:nth-child(4) { animation-delay: .46s; }
+  /* The headline is the LCP element — it rises in but never starts invisible,
+     so the browser can count it as painted on the first frame. */
+  .js body > div > section:first-of-type > div > div > h1 {
+    opacity: 1;
+    animation-name: bgwHeroRise;
+  }
+  @keyframes bgwHeroRise {
+    from { transform: translateY(22px); }
+    to   { transform: none; }
+  }
+  @keyframes bgwHeroIn {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ---- Card hover lift (applied to bordered cards by animations.js) ---- */
+  .lift { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .lift:hover {
+    transform: translateY(-5px);
+    border-color: rgba(242,106,27,0.55) !important;
+    box-shadow: 0 18px 44px -16px rgba(0,0,0,0.65);
+  }
+
+  /* ---- Arrow nudge on primary/ghost buttons ---- */
+  .btn-primary span, .btn-ghost span { transition: transform .2s ease; }
+  .btn-primary:hover span, .btn-ghost:hover span { transform: translateX(5px); }
+
+  /* ---- Phone CTA pulse — gentle "call us" cue on the nav phone button ---- */
+  .phone-btn { animation: bgwCallPulse 2.4s ease-in-out infinite; }
+  .phone-btn:hover { animation: none; } /* settle once the user engages */
+  @keyframes bgwCallPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(242,106,27,0.40); }
+    70%  { box-shadow: 0 0 0 7px rgba(242,106,27,0); }
+    100% { box-shadow: 0 0 0 0 rgba(242,106,27,0); }
+  }
+  .phone-btn > span { animation: bgwCallDot 2.4s ease-in-out infinite; }
+  @keyframes bgwCallDot { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+}
+
+/* ---- FAQ accordion — answers stay in the DOM (SEO-safe), collapsed only when JS can reopen them ---- */
+.faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; text-align:left; background:transparent; border:0; cursor:pointer; padding:24px 26px; color:#FFFFFF; }
+.faq-ttl { font-family:'Saira Condensed',sans-serif; font-weight:600; font-size:clamp(18px,2vw,21px); line-height:1.25; }
+.faq-ico { flex:none; width:24px; height:24px; display:inline-flex; align-items:center; justify-content:center; font-family:'Archivo',sans-serif; font-size:26px; line-height:1; color:var(--accent); }
+.faq-a { display:grid; grid-template-rows:1fr; }
+.faq-a-inner { overflow:hidden; }
+.faq-a p { margin:0; padding:0 26px 26px; font-family:'Archivo',sans-serif; font-size:15px; line-height:1.6; color:#B7AFA1; }
+.js .faq-a { grid-template-rows:0fr; }
+.js .faq-item.open .faq-a { grid-template-rows:1fr; }
+.js .faq-item.open .faq-ico { transform: rotate(45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-a { transition: grid-template-rows .32s cubic-bezier(.16,.84,.44,1); }
+  .faq-ico { transition: transform .3s ease; }
+}
+  </style>
   <script>document.documentElement.classList.add('js');</script>
   <script src="/analytics.js" defer></script>
   <title>BGW Trucking LLC | Interstate Carrier in Mechanicsburg, PA</title>
@@ -104,10 +188,78 @@
   <link rel="preload" as="image" href="/assets/img/truck-2199293-1600.webp" media="(min-width: 800px) and (max-width: 1599px)" fetchpriority="high">
   <link rel="preload" as="image" href="/assets/img/truck-2199293-2400.webp" media="(min-width: 1600px)" fetchpriority="high">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-condensed-700.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-condensed-600.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-400.woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-mono-500.woff2" crossorigin>
+  <style>/* Self-hosted fonts (latin), inlined to skip a request */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/assets/fonts/archivo-var.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/assets/fonts/archivo-var.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/assets/fonts/archivo-var.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/assets/fonts/ibm-plex-mono-400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/assets/fonts/ibm-plex-mono-500.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/assets/fonts/saira-condensed-500.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/assets/fonts/saira-condensed-600.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Saira Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/assets/fonts/saira-condensed-700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+  </style>
   <style>
     :root {
       --accent: #F26A1B;
@@ -389,6 +541,6 @@
 
 </div>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<script src="/animations.js"></script>
+<script src="/animations.js" defer></script>
 </body>
 </html>
