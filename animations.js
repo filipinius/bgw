@@ -89,7 +89,7 @@
   }
 
   var hasBorder = /border:\s*1px solid/;
-  var sections = document.querySelectorAll('body > div > section');
+  var sections = document.querySelectorAll('body > div > main > section');
 
   Array.prototype.forEach.call(sections, function (sec, si) {
     if (si === 0) return; // hero is handled by CSS

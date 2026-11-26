@@ -61,17 +61,17 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
   .js .reveal.is-visible { opacity: 1; transform: none; }
 
   /* ---- Hero entrance (CSS-only so there is no first-paint flash) ---- */
-  .js body > div > section:first-of-type > div > div > * {
+  .js body > div > main > section:first-of-type > div > div > * {
     opacity: 0;
     animation: bgwHeroIn .85s cubic-bezier(.16,.84,.44,1) forwards;
   }
-  .js body > div > section:first-of-type > div > div > *:nth-child(1) { animation-delay: .10s; }
-  .js body > div > section:first-of-type > div > div > *:nth-child(2) { animation-delay: .22s; }
-  .js body > div > section:first-of-type > div > div > *:nth-child(3) { animation-delay: .34s; }
-  .js body > div > section:first-of-type > div > div > *:nth-child(4) { animation-delay: .46s; }
+  .js body > div > main > section:first-of-type > div > div > *:nth-child(1) { animation-delay: .10s; }
+  .js body > div > main > section:first-of-type > div > div > *:nth-child(2) { animation-delay: .22s; }
+  .js body > div > main > section:first-of-type > div > div > *:nth-child(3) { animation-delay: .34s; }
+  .js body > div > main > section:first-of-type > div > div > *:nth-child(4) { animation-delay: .46s; }
   /* The headline is the LCP element — it rises in but never starts invisible,
      so the browser can count it as painted on the first frame. */
-  .js body > div > section:first-of-type > div > div > h1 {
+  .js body > div > main > section:first-of-type > div > div > h1 {
     opacity: 1;
     animation-name: bgwHeroRise;
   }
@@ -249,6 +249,8 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
     </nav>
   </header>
 
+  <main>
+
   <!-- ===== HERO ===== -->
   <section class="hero" style="position:relative; min-height:clamp(440px,58vh,600px); display:flex; align-items:center; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(12,11,9,0.94) 0%, rgba(12,11,9,0.78) 44%, rgba(12,11,9,0.35) 78%, rgba(12,11,9,0.58) 100%), linear-gradient(0deg, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0) 55%), #0C0B09 var(--hero-img) center 60% / cover no-repeat;">
     <div style="max-width:var(--maxw); margin:0 auto; padding:clamp(48px,7vw,84px) 40px; width:100%;">
@@ -384,6 +386,8 @@ header.scrolled { box-shadow: 0 12px 30px -14px rgba(0,0,0,0.75); }
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer style="border-top:1px solid var(--border); background:var(--bg2);">
