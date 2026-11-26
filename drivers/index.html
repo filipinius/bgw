@@ -124,15 +124,12 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/animations.css">
-  <link rel="preconnect" href="https://images.pexels.com">
-  <link rel="preload" as="image" href="https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800" media="(max-width: 799px)" fetchpriority="high">
-  <link rel="preload" as="image" href="https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=1600" media="(min-width: 800px) and (max-width: 1599px)" fetchpriority="high">
-  <link rel="preload" as="image" href="https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=2400" media="(min-width: 1600px)" fetchpriority="high">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="preload" as="image" href="/assets/img/truck-2480807-800.webp" media="(max-width: 799px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/img/truck-2480807-1600.webp" media="(min-width: 800px) and (max-width: 1599px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/img/truck-2480807-2400.webp" media="(min-width: 1600px)" fetchpriority="high">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/saira-condensed-700.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <style>
     :root { --accent:#F26A1B; --bg:#17150F; --bg2:#201D15; --border:rgba(255,255,255,0.07); --maxw:1240px; }
     *, *::before, *::after { box-sizing: border-box; }
@@ -148,9 +145,9 @@
     .btn-ghost { transition: border-color .15s ease, background .15s ease; }
     .btn-ghost:hover { border-color: #FFFFFF; background: rgba(255,255,255,0.06); }
     /* Hero image: sized per viewport so phones don't download the 2400px file */
-    .hero { --hero-img: url('https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800'); }
-    @media (min-width: 800px) { .hero { --hero-img: url('https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=1600'); } }
-    @media (min-width: 1600px) { .hero { --hero-img: url('https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=2400'); } }
+    .hero { --hero-img: url('/assets/img/truck-2480807-800.webp'); }
+    @media (min-width: 800px) { .hero { --hero-img: url('/assets/img/truck-2480807-1600.webp'); } }
+    @media (min-width: 1600px) { .hero { --hero-img: url('/assets/img/truck-2480807-2400.webp'); } }
   </style>
 </head>
 <body>
